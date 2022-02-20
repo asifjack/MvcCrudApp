@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MvcCrudApp.Models.Employee>
+
+<a asp-action="Create" asp-controller="Employee" class="btn btn-info">Create</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@employee.Id</td>
+            <td>@employee.Name</td>
+            <td>@employee.Email</td>
+            <td>@employee.Mobile</td>
+            <td>@employee.Address</td>
+        </tr>
+    }
+
+</table>
