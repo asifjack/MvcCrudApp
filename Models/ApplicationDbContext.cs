@@ -11,6 +11,8 @@ namespace MvcCrudApp.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {                         
         }
+
+
             public DbSet<Location> Locations { get; set;}
             public DbSet<Customer> Customers { get; set;}
             public DbSet<Employee> Employees { get; set; }

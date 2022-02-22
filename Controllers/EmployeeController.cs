@@ -29,10 +29,48 @@ namespace MvcCrudApp.Controllers
         [HttpPost]
         public IActionResult Create(Employee emp)
         {
-            dbContext.Employees.Add(emp);
-            dbContext.SaveChanges();
-            return RedirectToAction("index");
+            if (ModelState.IsValid)
+            {
+                dbContext.Employees.Add(emp);
+                dbContext.SaveChanges();
+                return RedirectToAction("index");
+            }
+            else 
+            {
+                return View(emp);
+            }
         }
+
+        public IActionResult Update(int id)
+        {
+            var DbCheckEmp =  dbContext.Employees.SingleOrDefault(e => e.Id==id);
+            return View(DbCheckEmp);
+        }
+        [HttpPost]
+        public IActionResult Update(Employee emp)
+        {
+            dbContext.Employees.Update(emp);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //Delete A Record 
+        public IActionResult Delete(int id) 
+        {
+            var emplCheck =  dbContext.Employees.SingleOrDefault(e=>e.Id==id);
+            if (emplCheck !=null)
+            {
+                dbContext.Employees.Remove(emplCheck);
+                dbContext.SaveChanges();
+               return RedirectToAction("Index"); 
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            
+        }
+
 
     }
 }

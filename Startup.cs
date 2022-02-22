@@ -28,8 +28,7 @@ namespace MvcCrudApp
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer
-                (Configuration.GetConnectionString("dbcon")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("dbcon")));
             
         }
 
